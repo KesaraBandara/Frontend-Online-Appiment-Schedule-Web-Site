@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultant DashBoard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" href="dashBoard.css">-->
+    <link rel="stylesheet" href="dashBoard.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+ <script src="js/consultant.js"></script>
+<script src="js/time.js"></script>
+<!--<script src="js/time.js"></script>-->
+<body>
+<button type="submit" class="btn btn-primary" onclick="logout()">log out</button>
+<button class="" onclick="window.location.href='consultant.html.html'">See All Appointment</button>
+
+<div class="container col-6  mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mt-5">
+                <label for="countries">Add your country:</label>
+                <input type="text" class="form-control" id="countries" placeholder="Enter text">
+            </div>
+            <div class="col-md-4 mt-5">
+                <button type="button" class="btn btn-primary" onclick="addCountry()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mt-4">
+                <label for="Jobs">Add your Jobs:</label>
+                <input type="text" class="form-control" id="Jobs" placeholder="Enter text">
+            </div>
+            <div class="col-md-4 mt-5">
+                <button type="button" class="btn btn-primary" onclick="addJobs()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--&lt;!&ndash; Placeholder for session ID &ndash;&gt;-->
+<!--<p>Session ID: <span id="sessionIDPlaceholder"></span></p>-->
+<!--&lt;!&ndash; Placeholder for consultant's cookie ID &ndash;&gt;-->
+<!--<p>Consultant Cookie ID: <span id="consultantCookieIDPlaceholder"></span></p>-->
+<div>
+<div class="container col-6 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title mb-5">Set Schedule</h5>
+
+
+            <form class="mt-5">
+                <div class="form-group mt-3 mb-3">
+                    <label for="SelectCountry">Select or type a country:</label>
+                    <select id="SelectCountry" class="form-control"></select>
+
+                    <!-- You can include similar small and input elements here if needed -->
+                </div>
+            </form>
+            <form class="mt-5">
+                <div class="form-group mt-3 mb-3">
+                    <label for="SelectJob">Select or type a job:</label>
+                    <select id="SelectJob" class="form-control"></select>
+                    <!-- You can include similar small and input elements here if needed -->
+                </div>
+            </form>
+
+
+            <form class="mt-5">
+                <div class="form-group">
+                    <label for="day">Select or type a day:</label>
+                    <select class="form-control" id="day" name="time" required>
+                        <option ></option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Friday">Saturday</option>
+                    </select>
+                    <!-- You can include similar small and input elements here if needed -->
+                </div>
+            </form>
+            <form>
+                <div class="form-group mt-3 mb-3">
+                    <label for="timeDropdown">Select or type a time:</label>
+                    <select id="timeDropdown" class="form-control"></select>
+
+                    <!-- You can include similar small and input elements here if needed -->
+                </div>
+            </form>
+
+            <button type="submit" class="btn btn-primary" onclick="setSchedule()">Submit</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<section>
+    <!--<div class="container">-->
+    <div class="box-container mb-5" id="scheduleContainer">
+        <!--    <button type="button" class="btn btn-danger" onclick="deleteCategory()">${ID} Delete</button>-->
+
+    </div>
+
+</section>
+
+
+
+
+
+</body>
+</html>
