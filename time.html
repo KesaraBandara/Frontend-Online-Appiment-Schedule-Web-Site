@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Time</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="time.css">
 </head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+<script src="js/time.js"></script>
 <body>
-$END$
+
+<div class="container mt-5 col-6" >
+<!--    <div class="mb-3">-->
+<!--        <label for="exampleFormControlInput1" class="form-label">ID</label>-->
+<!--        <input type="text" disabled class="form-control" id="exampleFormControlInput1" placeholder="ID">-->
+<!--    </div>-->
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Time period</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Time period">
+    </div>
+    <div >
+        <button type="button" class="btn btn-primary" id="add" onclick="addTimePeriod()">Add</button>
+    </div>
+</div>
+<section>
+    <div class="box-container" id="timePeriod"></div>
+</section>
+
 </body>
 </html>

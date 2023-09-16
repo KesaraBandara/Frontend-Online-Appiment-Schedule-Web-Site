@@ -12,10 +12,17 @@
 <script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
  <script src="js/consultant.js"></script>
 <script src="js/time.js"></script>
-<!--<script src="js/time.js"></script>-->
+<script>
+    const token = localStorage.getItem("token");
+    if(token==null){
+        window.location.href='consultantSignIn.html'
+    }
+</script>
 <body>
+
+<iframe src="consultantNav.html" width="100%" height="100%"></iframe>
 <button type="submit" class="btn btn-primary" onclick="logout()">log out</button>
-<button class="" onclick="window.location.href='consultant.html.html'">See All Appointment</button>
+<button type="submit" class="btn btn-primary" onclick="location.href='consultantAppointmentList.html'">see all appointment</button>
 
 <div class="container col-6  mb-5">
     <div class="container">

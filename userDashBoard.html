@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>the job</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <style>
+    /* Custom CSS */
+    .fullscreen {
+      position: fixed;
+      top: calc(100% - 5cm);
+      left: 0;
+      width: 100%;
+      height: calc(100% - 5cm);
+      background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a semi-transparent background */
+      z-index: 1; /* Optional: Adjust z-index to ensure the content below is accessible */
+    }
+
+    /* Center the image */
+    .centered-img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+<script src="js/code.jquery.com_jquery-3.7.0.min.js"></script>
+<script src="js/User.js"></script>
 <body>
-$END$
+<iframe src="navigationbar.html" width="100%" height="100%"></iframe>
+<div class="centered-img">
+  <img src="https://cdn.britannica.com/47/1947-004-44F4E790/Flag-North-Korea.jpg" alt="Description of the image" class="img-fluid"  height="100%">
+</div>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div class="my-div">
+        <h5 class="card-title">Make an appointment </h5>
+        <p class="card-text"></p>
+<!--        <button class="btn btn-primary" > Si</button>-->
+        <button class="btn btn-secondary" onclick="window.location.href='userAppoinmentDashboard.html'">get appointment</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

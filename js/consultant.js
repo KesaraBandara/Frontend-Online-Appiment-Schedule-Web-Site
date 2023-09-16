@@ -1,4 +1,3 @@
-getAllConsultant()
 getAllJobs()
 getAllCounties()
 getAllScheduleByToken()
@@ -24,7 +23,7 @@ function getConsultantByToken(callback) {
             }
         },
         error: function (xhr, exception) {
-            alert("Error");
+            // alert("Error");
         }
     });
 }
@@ -38,6 +37,10 @@ function addConsultant() {
     let email = $('#input4').val();
     let mNumber = $('#input5').val();
     let password = $('#input6').val();
+    if (!fName || !lName || !gender || !email || !mNumber || !password) {
+        alert("Please fill in all required fields.");
+        return;
+    }
 
     $.ajax({
         method: "POST",
@@ -72,34 +75,34 @@ function addConsultant() {
     })
 }
 
-function getAllConsultant() {
-
-    $.ajax({
-        method: "GET",
-        url: "http://localhost:8080/api/v1/consultant/getAllConsultants",
-        async: true,
-        success: function (data) {
-            if (data.code === "00") {
-                $('#conTable').empty();
-                for (let Consultant of data.content) {
-                    let conID = Consultant.id
-                    let fName = Consultant.fName
-                    let lName = Consultant.lName
-                    let gender = Consultant.gender
-                    let email = Consultant.email
-                    let contactNumber = Consultant.contactNumber
-                    let password = Consultant.password
-
-                    var row = `<tr><td>${conID}</td><td>${fName}</td><td>${lName}</td><td>${gender}</td><td>${email}</td><td>${contactNumber}</td><td>${password}</td></tr>`;
-                    $('#conTable').append(row);
-                }
-            }
-        },
-        error: function (xhr, exception) {
-            alert("Error")
-        }
-    })
-}
+// function getAllConsultant() {
+//
+//     $.ajax({
+//         method: "GET",
+//         url: "http://localhost:8080/api/v1/consultant/getAllConsultants",
+//         async: true,
+//         success: function (data) {
+//             if (data.code === "00") {
+//                 $('#conTable').empty();
+//                 for (let Consultant of data.content) {
+//                     let conID = Consultant.id
+//                     let fName = Consultant.fName
+//                     let lName = Consultant.lName
+//                     let gender = Consultant.gender
+//                     let email = Consultant.email
+//                     let contactNumber = Consultant.contactNumber
+//                     let password = Consultant.password
+//
+//                     var row = `<tr><td>${conID}</td><td>${fName}</td><td>${lName}</td><td>${gender}</td><td>${email}</td><td>${contactNumber}</td><td>${password}</td></tr>`;
+//                     $('#conTable').append(row);
+//                 }
+//             }
+//         },
+//         error: function (xhr, exception) {
+//             alert("Error")
+//         }
+//     })
+// }
 
 // function consultantLogin(event) {
 function consultantLogin() {
@@ -124,10 +127,10 @@ function consultantLogin() {
         }),
         success: function (data) {
             // console.log(data.message);
-            localStorage.setItem("token", data.token);
 
             // data.token = undefined;
             if (data.code === "00") {
+                localStorage.setItem("token", data.token);
 
 // Store the token in local storage
                 window.location.href = "consultantSetScheduleDashBoard.html";
@@ -240,7 +243,7 @@ function addJobs() {
         success: function (data) {
             if (data.code === '00') {
                 alert("Added Jobs")
-                getAllTimes()
+                getAllJobs()
             } else if (data.code === '06') {
                 alert("Already added")
             }
@@ -250,25 +253,25 @@ function addJobs() {
             console.log(exception);
             alert("An error occurred");
         }})}
-$(document).ready(function () {
-    $(document).on('click', '#conTable tr', function () {
-        var col0 = $(this).find('td:eq(0)').text();
-        var col1 = $(this).find('td:eq(1)').text();
-        var col2 = $(this).find('td:eq(2)').text();
-        var col3 = $(this).find('td:eq(3)').text();
-        var col4 = $(this).find('td:eq(4)').text();
-        var col5 = $(this).find('td:eq(5)').text();
-        var col6 = $(this).find('td:eq(6)').text();
-
-        $('#input7').val(col0);
-        $('#input1').val(col1);
-        $('#input2').val(col2);
-        $('#input3').val(col3);
-        $('#input4').val(col4);
-        $('#input5').val(col5);
-        $('#input6').val(col6);
-    })
-})
+// $(document).ready(function () {
+//     $(document).on('click', '#conTable tr', function () {
+//         var col0 = $(this).find('td:eq(0)').text();
+//         var col1 = $(this).find('td:eq(1)').text();
+//         var col2 = $(this).find('td:eq(2)').text();
+//         var col3 = $(this).find('td:eq(3)').text();
+//         var col4 = $(this).find('td:eq(4)').text();
+//         var col5 = $(this).find('td:eq(5)').text();
+//         var col6 = $(this).find('td:eq(6)').text();
+//
+//         $('#input7').val(col0);
+//         $('#input1').val(col1);
+//         $('#input2').val(col2);
+//         $('#input3').val(col3);
+//         $('#input4').val(col4);
+//         $('#input5').val(col5);
+//         $('#input6').val(col6);
+//     })
+// })
 
 function clearTextField() {
 
@@ -325,7 +328,6 @@ function getAllJobs() {
         success: function (data) {
             if (data.code === "00") {
                 var jobData = data.content;
-                console.log("Received data:", jobData);
                 var dropdown = $('#SelectJob');
 
                 dropdown.empty();
@@ -358,7 +360,7 @@ function getAllCounties() {
         success: function (data) {
             if (data.code === "00") {
                 var countryData = data.content;
-                console.log("Received data:", countryData);
+                // console.log("Received data:", countryData);
                 var dropdown = $('#SelectCountry');
 
                 // Clear existing options
@@ -534,7 +536,6 @@ function updateSchedule() {
 
 function getAllAppointmentById() {
     const user = localStorage.getItem("userId");
-    console.log(user + "hellelele") // This will log the user ID if it's available
 
     $.ajax({
         method: "GET",
@@ -553,14 +554,127 @@ function getAllAppointmentById() {
                     // Assuming 'password' should be 'userDTO'
                     let userDTO = appointment.userDTO;
 
-                    var row2 = `<tr><td>${appID}</td><td>${time}</td><td>${date}</td><td>${day}<td>${country}</td><td>${jobType}</td><td>${userDTO}</td><td> <button class="btn btn-success" onclick="function1()">CONFIRM</button>
-        <button class="btn btn-danger" onclick="function2()">DELETE</button></td></tr>`;
+
+                    var row2 = `<tr><td>${appID}</td><td>${time}</td><td>${date}</td><td>${day}<td>${country}</td><td>${jobType}</td><td>${userDTO}</td><td> 
+                        <button class="btn btn-success" id="confirmButton" onclick="confirmAppointment('${appID}')">CONFIRM</button>
+                        <button class="btn btn-danger" id="cancelButton" onclick="deleteAppointment('${appID}')">DELETE</button></td></tr>`;
                     $('#appointmentTable').append(row2);
+                    // <button className="btn btn-primary" id="confirmButton">Confirm Appointment</button>
+                    // <button className="btn btn-danger" id="cancelButton">Cancel Appointment</button>
+                    // onclick="deleteProduct('${ID}')"
                 }
             }
         },
         error: function (xhr, exception) {
-            alert("Error");
+            // alert("Error");
         }
     });
 }
+
+function confirmAppointment(appID){
+
+
+    $.ajax( {
+    method:"PUT",
+    contentType:"application/json",
+    url:"http://localhost:8080/api/v1/appointment/appointmentConfirmation/" + appID,
+    async:true,
+    data:JSON.stringify({
+        "confirm": true,
+        "nonConfirm": false
+    }),
+    success: function (data) {
+        $('#confirmButton').empty();
+        $('#cancelButton').empty();
+        alert("Updated")
+
+    },
+    error: function (xhr, exception) {
+        alert("error")
+    }
+})}
+    function deleteAppointment(appID){
+
+        $.ajax( {
+        method:"PUT",
+        contentType:"application/json",
+        url:"http://localhost:8080/api/v1/appointment/appointmentConfirmation/" + appID,
+        async:true,
+        data:JSON.stringify({
+            "confirm": false,
+            "nonConfirm": true
+        }),
+        success: function (data) {
+            alert("delete")
+
+        },
+        error: function (xhr, exception) {
+            alert("error")
+        }
+    })}
+
+
+    // $.ajax( {
+    //     method:"PUT",
+    //     contentType:"application/json",
+    //     url:"http://localhost:8080/api/v1/appointment/appointmentConfirmation/" + apId,
+    //     async:true,
+    //     data:JSON.stringify({
+    //         "confirm": true,
+    //         "nonConfirm": false
+    //     }),
+    //     success: function (data) {
+    //         alert("Updated")
+    //         getAllEmployee();
+    //         clearTextField();
+    //     },
+    //     error: function (xhr, exception) {
+    //         alert("error")
+    //     }
+    // })
+
+
+// function callAppointmentConfirmation(appointmentId, appointmentVerifyDTO) {
+//     $.ajax({
+//         method: "PUT",
+//         contentType: "application/json",
+//         url: `/api/v1/appointment/appointmentConfirmation/${appointmentId}`,
+//         async: true,
+//         data: JSON.stringify(appointmentVerifyDTO),
+//         success: function (data) {
+//             if (data.code === '00') {
+//                 alert("Appointment confirmed successfully.");
+//                 // Handle success as needed, e.g., update UI or redirect
+//             } else if (data.code === '06') {
+//                 alert("Appointment not found.");
+//                 // Handle appointment not found
+//             } else {
+//                 alert("An error occurred.");
+//                 // Handle other errors
+//             }
+//         },
+//         error: function (xhr, exception) {
+//             alert("An error occurred.");
+//             // Handle AJAX error
+//         }
+//     });
+// }
+// // Assuming you have buttons with IDs "confirmButton" and "nonConfirmButton"
+// document.getElementById("confirmButton").addEventListener("click", function () {
+//     const appointmentId = 123; // Replace with the actual appointment ID
+//     const appointmentVerifyDTO = {
+//         confirm: true,
+//         nonConfirm: false
+//     };
+//     callAppointmentConfirmation(appointmentId, appointmentVerifyDTO);
+// });
+//
+// document.getElementById("nonConfirmButton").addEventListener("click", function () {
+//     const appointmentId = 123; // Replace with the actual appointment ID
+//     const appointmentVerifyDTO = {
+//         confirm: false,
+//         nonConfirm: true
+//     };
+//     callAppointmentConfirmation(appointmentId, appointmentVerifyDTO);
+// });
+//

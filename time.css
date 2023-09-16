@@ -1,0 +1,11 @@
+
+.box-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 120px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 2px));
+    gap:1rem;
+    align-items: flex-start;
+}
+
